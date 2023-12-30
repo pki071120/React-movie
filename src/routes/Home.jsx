@@ -10,8 +10,14 @@ function Movies({ id, src, title, summary, genres }) {
   return (
     <div>
       <img src={src} alt="" />
-      <h2 onClick={()=>titleClick(id)}>{title}</h2>
-      <p>{summary !== "" ? summary : `Nothing`}</p>
+      <h2 onClick={() => titleClick(id)}>{title}</h2>
+      <p>
+        {summary !== ""
+          ? summary.length > 235
+            ? `${summary.slice(0, 235)}...`
+            : summary
+          : `Nothing`}
+      </p>
       <ul>
         {genres.map((g) => (
           <li key={g}>{g}</li>
